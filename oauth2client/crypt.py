@@ -228,11 +228,8 @@ try:
         True if message was signed by the private key associated with the public
         key that this object was constructed with.
       """
-      try:
-        return PKCS1_v1_5.new(self._pubkey).verify(
-            SHA256.new(message), signature)
-      except:
-        return False
+      return PKCS1_v1_5.new(self._pubkey).verify(
+          SHA256.new(message), signature)
 
     @staticmethod
     def from_string(key_pem, is_x509_cert):
