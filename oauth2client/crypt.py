@@ -408,6 +408,7 @@ def verify_signed_jwt_with_certs(jwt, certs, audience):
   if len(segments) != 3:
     raise AppIdentityError('Wrong number of segments in token: %s' % jwt)
   signed = '%s.%s' % (segments[0], segments[1])
+  signed = signed.encode('utf-8')
 
   signature = _urlsafe_b64decode(segments[2])
 
